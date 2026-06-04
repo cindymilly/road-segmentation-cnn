@@ -198,7 +198,7 @@ with tab_gallery:
             with cols_gallery[i % 3]:
                 img_bytes = base64.b64decode(demo["thumbnail"])
                 img_pil   = Image.open(io.BytesIO(img_bytes))
-                st.image(img_pil, use_container_width=True)
+                st.image(img_pil, use_column_width=True)
                 cls_tag = f'<span class="{color_map[demo["cls_id"]]}">{demo["label"]}</span>'
                 st.markdown(
                     f'{cls_tag} — Density: {demo["density"]*100:.2f}%',
@@ -243,14 +243,14 @@ with tab_gallery:
                 with col1:
                     st.markdown("**Anh goc**")
                     img_rgb = cv2.cvtColor(img_disp, cv2.COLOR_BGR2RGB)
-                    st.image(img_rgb, use_container_width=True)
+                    st.image(img_rgb, use_column_width=True)
                 with col2:
                     st.markdown("**Road Mask**")
-                    st.image(mask_disp, use_container_width=True)
+                    st.image(mask_disp, use_column_width=True)
                 with col3:
                     st.markdown("**Overlay**")
                     ovl_rgb = cv2.cvtColor(overlay_disp, cv2.COLOR_BGR2RGB)
-                    st.image(ovl_rgb, use_container_width=True)
+                    st.image(ovl_rgb, use_column_width=True)
 
                 # Per-class metrics
                 if per_class_data:
@@ -266,7 +266,7 @@ with tab_gallery:
                         }
                         for r in per_class_data
                     ])
-                    st.dataframe(df_pc, use_container_width=True, hide_index=True)
+                    st.dataframe(df_pc, use_column_width=True, hide_index=True)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # TAB 2: Upload anh
@@ -288,7 +288,7 @@ with tab_upload:
             st.image(
                 cv2.cvtColor(cv2.resize(img_bgr, (640, 480)), cv2.COLOR_BGR2RGB),
                 caption=f"Anh da upload: {w}x{h}px",
-                use_container_width=False, width=640,
+                use_column_width=False, width=640,
             )
 
             if st.button("Phan tich anh nay"):
@@ -318,13 +318,13 @@ with tab_upload:
                 col1, col2, col3 = st.columns(3)
                 with col1:
                     st.markdown("**Anh goc**")
-                    st.image(cv2.cvtColor(img_disp, cv2.COLOR_BGR2RGB), use_container_width=True)
+                    st.image(cv2.cvtColor(img_disp, cv2.COLOR_BGR2RGB), use_column_width=True)
                 with col2:
                     st.markdown("**Road Mask**")
-                    st.image(mask_disp, use_container_width=True)
+                    st.image(mask_disp, use_column_width=True)
                 with col3:
                     st.markdown("**Overlay**")
-                    st.image(cv2.cvtColor(overlay_disp, cv2.COLOR_BGR2RGB), use_container_width=True)
+                    st.image(cv2.cvtColor(overlay_disp, cv2.COLOR_BGR2RGB), use_column_width=True)
 
                 if per_class_data:
                     st.markdown("**Chi so theo class**")
@@ -339,7 +339,7 @@ with tab_upload:
                         }
                         for r in per_class_data
                     ])
-                    st.dataframe(df_pc, use_container_width=True, hide_index=True)
+                    st.dataframe(df_pc, use_column_width=True, hide_index=True)
 
 # ─────────────────────────────────────────────────────────────────────────────
 # TAB 3: Cắt bản đồ
@@ -487,11 +487,11 @@ with tab_map:
                     col1, col2, col3 = st.columns(3)
                     with col1:
                         st.markdown("**Ảnh cắt**")
-                        st.image(cv2.cvtColor(img_disp, cv2.COLOR_BGR2RGB), use_container_width=True)
+                        st.image(cv2.cvtColor(img_disp, cv2.COLOR_BGR2RGB), use_column_width=True)
                     with col2:
                         st.markdown("**Road Mask**")
-                        st.image(mask_disp, use_container_width=True)
+                        st.image(mask_disp, use_column_width=True)
                     with col3:
                         st.markdown("**Overlay**")
-                        st.image(cv2.cvtColor(overlay_disp, cv2.COLOR_BGR2RGB), use_container_width=True)
+                        st.image(cv2.cvtColor(overlay_disp, cv2.COLOR_BGR2RGB), use_column_width=True)
 

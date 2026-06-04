@@ -5,3 +5,9 @@ backgroundColor="#060910"
 secondaryBackgroundColor="#0c1422"
 textColor="#c8ddf5"
 font="sans serif"
+
+[client]
+showErrorDetails = false
+
+[global]
+showWarningOnDirectExecution = false
