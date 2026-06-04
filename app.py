@@ -81,7 +81,7 @@ def merge_files(base_filepath):
 
 @st.cache_resource
 def load_models_and_state():
-    # Force cache reload 7
+    # Force cache reload 8
     try:
         merge_files('tinyvgg_small.keras')
         merge_files('lenet_small.keras')
@@ -211,7 +211,13 @@ with tab_gallery:
         sel_idx = st.session_state.get("sel_idx", -1)
         if sel_idx >= 0 and sel_idx < len(DEMO_GALLERY):
             demo = DEMO_GALLERY[sel_idx]
-            img_bgr = cv2.imread(demo["sat_path"])
+            if "full_img_b64" in demo:
+                img_bytes = base64.b64decode(demo["full_img_b64"])
+                np_arr = np.frombuffer(img_bytes, np.uint8)
+                img_bgr = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
+            else:
+                img_bgr = cv2.imread(demo["sat_path"])
+
             if img_bgr is not None:
                 with st.spinner("CNN dang phan tich..."):
                     t0 = time.time()
