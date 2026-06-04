@@ -81,7 +81,7 @@ def merge_files(base_filepath):
 
 @st.cache_resource
 def load_models_and_state():
-    # Force cache reload 5
+    # Force cache reload 6
     try:
         merge_files('tinyvgg_small.keras')
         merge_files('lenet_small.keras')
@@ -384,8 +384,7 @@ with tab_map:
 
         from folium.plugins import Draw
         draw = Draw(
-            export=False, position='topleft',
-            draw_options={'polyline': False, 'polygon': False, 'circle': False, 'circlemarker': False, 'marker': False, 'rectangle': {'shapeOptions': {'color': '#4f8eff'}}}
+            export=False, position='topleft'
         )
         draw.add_to(m)
 
