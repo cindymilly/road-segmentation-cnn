@@ -5,4 +5,4 @@ Pillow
 folium
 streamlit-folium
 requests
-tensorflow
+tensorflow-cpu
